@@ -13,19 +13,19 @@ df_az["AZE-LOW"] = df_az["AZE"].apply(lambda x: x.split(' ')[1])
 
 def get_transliteration(source_lang, target_alphabet, text):
     
-    if source_lang == 'ARM':
+    if source_lang == 'hy':
         return ''.join([( df_ar[df_ar["ARM-LOW"] == letter][target_alphabet].values[0] 
             if df_ar[df_ar["ARM-LOW"] == letter].shape[0] == 1 
             else df_ar[df_ar["ARM-UP"] == letter][target_alphabet].values[0]
                 if df_ar[df_ar["ARM-UP"] == letter].shape[0] == 1
                 else letter ) for letter in text]) 
-    elif source_lang == 'AZE':
+    elif source_lang == 'az':
         return ''.join([( df_az[df_az["AZE-LOW"] == letter][target_alphabet].values[0] 
             if df_az[df_az["AZE-LOW"] == letter].shape[0] == 1 
             else df_az[df_az["AZE-UP"] == letter][target_alphabet].values[0]
                 if df_az[df_az["AZE-UP"] == letter].shape[0] == 1
                 else letter ) for letter in text]) 
-    elif source_lang == 'GEO':
+    elif source_lang == 'ka':
         return ''.join([( df_ka[df_ka["GEO"] == letter][target_alphabet].values[0] 
             if df_ka[df_ka["GEO"] == letter].shape[0] == 1 
             else letter ) for letter in text]) 
